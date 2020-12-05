@@ -1,0 +1,17 @@
+ToDo:
+# add character autogenerate by parameters
+# add load and save oprion for projects
+# add custom time scheme class
+# add custom species tab (class)
+# save and load options for character and characterlist
+# add map placement and positioning system class
+# strg v c and x for text fields
+# stuff for characters: tags(roleInTheWorld), relations to other characters, some big textfield for other notes, embed images as reference, other custom properties (abilities, magic affility whatever), minor and major faction memberships + rank, synonym name list and translations, link to other wvsn-objects (tag system?), nationality, gender, status (alive, etc), list of connected events (with age?), bloodgroop?, haircolor, eyecolor, optical-marks, height, weight, character traits
+# relationships have a time period: [start, end], 2 characters, relation type, maybe opinions about each other (optionally different from the displayed opinion? ), background info, shared knowledge and properties, importance of the relationship, can be familial, teacher, friend, foe etc
+! deleting more chars than there are leads to a textfield-crash
+
+Version 0.1:
++ added everything there is so far.
+
+
+Program for worldbuilding including persons, maps, places and all that stuff.
