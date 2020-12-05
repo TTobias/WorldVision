@@ -36,7 +36,6 @@ public class Character{
 public CharacterList characterList = new CharacterList();
 public class CharacterList{
   public ArrayList<Character> list = new ArrayList<Character>();//Might need a replacements by a sorted tree later on
-  public Character c = new Character();
   
   public void add(Character c){ list.add(c); }
   public void remove(Character c){ list.remove(c); }

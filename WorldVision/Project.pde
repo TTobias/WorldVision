@@ -14,6 +14,7 @@ public class Project{
   //All Main Pages
   public Home_Page homePage = new Home_Page();
   public CharacterList_Page characterListPage = new CharacterList_Page();
+  public MapList_Page mapListPage = new MapList_Page();
   
   //All Detail Pages
   public HomeDetail_Page homeDetailPage = new HomeDetail_Page();
@@ -36,6 +37,7 @@ public class Project{
     path = stmp[2]; //maybe this needs to be changed
     
     characterList.overwriteFromStrings( loadStrings(path+"/"+name+"/"+"character.txt") );
+    mapList.overwriteFromStrings( loadStrings(path+"/"+name+"/"+"map.txt") ); //Actual Images are still missing
   }
   
   
@@ -81,6 +83,9 @@ public class Project{
     
     //CHARACTER FILES
     saveStrings(path+"/"+name+"/character.txt", characterList.saveAsStrings());
+    
+    //MAP FILES
+    saveStrings(path+"/"+name+"/map.txt", mapList.saveAsStrings());
   }
 }
 
