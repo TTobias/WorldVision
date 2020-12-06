@@ -702,6 +702,7 @@ public class GuiTextInput extends GuiElement{
         updateText();
       }
       if(key == BACKSPACE){
+        if(tmpText.length() > 0)
         tmpText = new String(shorten(tmpText.toCharArray()));
       }
     }

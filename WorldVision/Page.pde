@@ -67,8 +67,7 @@ public class Startup_Page extends Page{
     }
     if(loadProjectBtn.getTrigger()){
       String p = waitForInput("Select the main.wvsn file of your project");
-      if(p != null/* && p.split(".")[1] != "wvsn"*/){
-        //DOES NOT WORK RIGHT NOW
+      if(p != null && getFileFormat(p).equals("wvsn") ){
         project = new Project( convertPath(p) );
       }
     }

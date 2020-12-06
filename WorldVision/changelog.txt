@@ -1,4 +1,6 @@
 ToDo:
+# map inspector main edit window for opening maps in detail
+# map preview window
 # add character autogenerate by parameters
 # add load and save oprion for projects
 # add custom time scheme class

@@ -35,7 +35,7 @@ public class Home_Page extends Page{
   
   public void constructGui(){
     CharacterPageBtn = new GuiButton(new Vector2(15,90), new Vector2(150,65), "Characters", true, true);    gui.addGui( CharacterPageBtn );
-    mapListPageBtn = new GuiButton(new Vector2(175,90), new Vector2(150,65), "Maps ", false, true);    gui.addGui( mapListPageBtn );
+    mapListPageBtn = new GuiButton(new Vector2(175,90), new Vector2(150,65), "Maps ", true, true);    gui.addGui( mapListPageBtn );
     timePageBtn = new GuiButton(new Vector2(335,90), new Vector2(150,65), "Time ", false, true);    gui.addGui( timePageBtn );
     eventPageBtn = new GuiButton(new Vector2(495,90), new Vector2(150,65), "Events", false, true);    gui.addGui( eventPageBtn );
     speciesPageBtn = new GuiButton(new Vector2(655,90), new Vector2(150,65), "Species", false, true);    gui.addGui( speciesPageBtn );
@@ -185,7 +185,7 @@ public class MapList_Page extends Page{
   public MapList_Page(){ super("MapList"); }
   
   //used for displaying
-  public ArrayList<Character> listInstance = new ArrayList<Character>();
+  public ArrayList<Map> listInstance = new ArrayList<Map>();
   public int startIndex;
   public int newStartIndex; //used for changing list-page
   public int objectsPerSite = 45;
@@ -201,21 +201,20 @@ public class MapList_Page extends Page{
     startIndex = newStartIndex;
     
     //Change CharacterList
-    characterStringTable.clearOptions();
-    ArrayList<Character> tmpCharList = characterList.getListPart(startIndex, startIndex      + objectsPerSite);
-    for(int i = 0; i<tmpCharList.size(); i++){
-      characterStringTable.list.add(tmpCharList.get(i).name+"\n"+tmpCharList.get(i).age+"\n"+tmpCharList.get(i).home);
-    }
+    //characterStringTable.clearOptions();
+    //ArrayList<Character> tmpCharList = characterList.getListPart(startIndex, startIndex      + objectsPerSite);
+    //for(int i = 0; i<tmpCharList.size(); i++){
+    //  characterStringTable.list.add(tmpCharList.get(i).name+"\n"+tmpCharList.get(i).age+"\n"+tmpCharList.get(i).home);
+    //}
     
     //Change ListNavigation Button Names
-    pageIndicatorTxt.text = floor(1+((float)(startIndex+1) / 45.0)) + " / " + floor((((float)characterList.size()-1) / 45.0)+1);
-    elementIndicatorTxt.text = (startIndex+1) + " - " + (startIndex+45) + " of " + characterList.size();
+    //pageIndicatorTxt.text = floor(1+((float)(startIndex+1) / 45.0)) + " / " + floor((((float)characterList.size()-1) / 45.0)+1);
+    //elementIndicatorTxt.text = (startIndex+1) + " - " + (startIndex+45) + " of " + characterList.size();
   }
   
   public void draw(){ BtnFunctions(); }
   
-  public GuiButton addCharacterBtn;
-  public GuiButton generateCharactersBtn; //NOT IMPLEMENTED YET
+  public GuiButton addMapBtn; //NOT IMPLEMENTED YET
   public GuiTextInput searchTextIn; //NOT IMPLEMENTED YET
   public GuiButton searchApplyBtn; //NOT IMPLEMENTED YET
   public GuiButton advancedSearchBtn; //NOT IMPLEMENTED YET
@@ -234,20 +233,18 @@ public class MapList_Page extends Page{
   
   
   public void constructGui(){
-    addCharacterBtn = new GuiButton(new Vector2(10,90), new Vector2(180,40), "Add Character", true, true);
-    generateCharactersBtn = new GuiButton(new Vector2(200,90), new Vector2(160,40), "Generator", false, true);
+    addMapBtn = new GuiButton(new Vector2(10,90), new Vector2(180,40), "Add Map", false, true);
     searchTextIn = new GuiTextInput(new Vector2(450,95), new Vector2(310,30), "", true);
     searchApplyBtn = new GuiButton(new Vector2(770,95), new Vector2(80,30), "Search", false, true);
     advancedSearchBtn = new GuiButton(new Vector2(860,95), new Vector2(100,30), "Advanced ", false, true);
-    gui.addGui( addCharacterBtn );
-    gui.addGui( generateCharactersBtn );
+    gui.addGui( addMapBtn );
     gui.addGui( searchApplyBtn );
     gui.addGui( advancedSearchBtn );
     gui.addGui( searchTextIn );
     
     upperSeperatorline = new GuiLine(new Vector2(20,140), new Vector2(980,140), true);
     gui.addGui ( upperSeperatorline );
-    
+    /*
     characterStringTable = new GuiStringTable(new Vector2(10,150), new Vector2(200,75), 5, 3, true);
     gui.addGui ( characterStringTable );
     
@@ -269,14 +266,14 @@ public class MapList_Page extends Page{
     gui.addGui ( elementIndicatorTxt );
     gui.addGui( reloadListBtn );
     
-    refreshList();
+    refreshList();*/
   }
   
   public void BtnFunctions(){
-    if(addCharacterBtn.getTrigger()){
-      characterList.add(new Character());
+    if(addMapBtn.getTrigger()){
+      //characterList.add(new Character());
       refreshList();
-    }
+    }/*
     if(reloadListBtn.getTrigger()){
       refreshList();
     }
@@ -300,6 +297,6 @@ public class MapList_Page extends Page{
     if(lastPageBtn.getTrigger()){
       newStartIndex = characterList.size()-45 >= 0? characterList.size()-45 : 0;
       refreshList();
-    }
+    }*/
   }
 }

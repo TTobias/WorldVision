@@ -122,6 +122,11 @@ public String convertPath(String p){ //needed because the file input backslashes
   return p3;
 }
 
+public String getFileFormat(String p){
+  String[] p2 = split(p,".");
+  return p2[p2.length-1];
+}
+
 
 
 
