@@ -3,7 +3,6 @@ public final String version = "WV-0.1";
 //Called once when the program starts
 public void setup(){
   size(1600,900);
-  
 }
 
 //Called every frame
@@ -88,6 +87,39 @@ public void mouse(){
   }
   
   pmouse = mousePressed;
+}
+
+
+
+
+public String selectionPath = "";
+public String waitForInput(String msg){
+  selectionPath = "";
+  println("Waiting for Input");
+  selectInput(msg, "fileSelected");
+  while(selectionPath != null && selectionPath.equals("")){ print(""); }
+  println("Input Selection finished");
+  return selectionPath;
+}
+
+void fileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+    selectionPath = null;
+  } else {
+    println("User selected " + selection.getAbsolutePath());
+    selectionPath = selection.getAbsolutePath();
+  }
+}
+
+public String convertPath(String p){ //needed because the file input backslashes "\" have to be replaced by normal slashes "/" for processing being able to read it
+  String[] p2 = split(p,"\\");
+  String p3 = "";
+  p3 += p2[0];
+  for(int i = 1; i<p2.length; i++){
+    p3 += "/"+p2[i];
+  }
+  return p3;
 }
 
 

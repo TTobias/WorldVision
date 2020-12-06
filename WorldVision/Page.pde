@@ -66,7 +66,11 @@ public class Startup_Page extends Page{
       project = new Project();
     }
     if(loadProjectBtn.getTrigger()){
-      //sceneManager.activeScene = sceneManager.getSceneIndexByName("Game");
+      String p = waitForInput("Select the main.wvsn file of your project");
+      if(p != null/* && p.split(".")[1] != "wvsn"*/){
+        //DOES NOT WORK RIGHT NOW
+        project = new Project( convertPath(p) );
+      }
     }
     if(exitProgramBtn.getTrigger()){
       exit();
