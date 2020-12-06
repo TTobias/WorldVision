@@ -79,3 +79,49 @@ public class CharacterDetail_Page extends Page{
     }*/
   }
 }
+
+
+
+//Detail Map Page
+public class MapDetail_Page extends Page{
+  public MapDetail_Page(){ super("Map Details"); }
+  
+  public Map map = null;
+  
+  //called once at the initialization of the Page and everytime it is set as active Page
+  public void initializePage(){
+    if(nameIn != null){ nameIn.text = ""; }
+    if(map != null && mapPreviewImg != null){ mapPreviewImg.img = map.img; }
+  }
+  
+  public void draw(){ BtnFunctions();
+    if(nameIn.text.equals("") && map != null){ nameIn.text = map.name; }
+  }
+  
+  public GuiPanel background;
+  public GuiText pageNameText;
+  public GuiImage mapPreviewImg;
+  
+  public GuiNamedTextInput nameIn;
+  
+  public void constructGui(){
+    background = new GuiPanel(new Vector2(1000,80), new Vector2(600,820), ColorCode.background, true);
+    pageNameText = new GuiText(new Vector2(1040,85), new Vector2(400, 30), name, true);
+    gui.addGui( background ); gui.addGui( pageNameText );
+    
+    nameIn = new GuiNamedTextInput(new Vector2(1010,125), new Vector2(550,30), "Name:", ColorCode.white, "", true);
+    mapPreviewImg = new GuiImage(new Vector2(1010,165), new Vector2(580,350),null,true);
+    gui.addGui( nameIn );
+    gui.addGui( mapPreviewImg );
+  }
+  
+  public void BtnFunctions(){
+    if(!nameIn.text.equals("") && !map.name.equals(nameIn.text)){
+      map.name = nameIn.text;
+      project.mapListPage.refreshList();
+    }
+    /*if(CharacterPageBtn.getTrigger()){
+      //BTN ACTION
+    }*/
+  }
+}

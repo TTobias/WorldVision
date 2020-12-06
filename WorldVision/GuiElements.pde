@@ -1236,6 +1236,28 @@ public class GuiStringTable extends GuiElement{
   }
 }
 
+
+//Image
+public class GuiImage extends GuiElement{
+  public Vector2 expanse;
+  public PImage img;
+  
+  public GuiImage(Vector2 pos, Vector2 exp, PImage i, boolean e){
+    super(pos, e);
+    expanse = exp;
+    img = i;
+  }
+  
+  public void show(){
+    if(img != null){
+      image(img,position.x,position.y,expanse.x,expanse.y);
+    }else{
+      fill(ColorCode.black);
+      rect(position.x,position.y,expanse.x,expanse.y);
+    }
+  }
+}
+
 //Slider
 public class GuiSlider extends GuiElement{
   

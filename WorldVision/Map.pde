@@ -2,23 +2,41 @@ public class Map{
   public String name;
   public String path;
   
-  //new Character
+  public String format = ".png";
+  
+  public PImage img;
+  
+  //new Map by the image path
   public Map(String p){
-    name = "NEW CHARACTER";
-    path = p;
-    
+    name = "NEW MAP";
+    loadInMapImage(p);//also sets the path and image
+  }
+  
+  // sets the img variable
+  public void loadInMapImage(String p){
+    img = loadImage(p);
+  }
+  
+  // creates a local copy of the image
+  public void saveLocalCopy(){
+    path = project.path +"/"+ project.name +"/map_src/";
+    img.save(path+name+format);
   }
   
   //load Character from String
   public Map(String[] n){
     name = n[0];
     path = n[1];
+    loadInMapImage(path+name+format);
   }
   
   //save Character as a String (usually called by the CharacterList class)
   public String saveAsString(){
+    saveLocalCopy();
+    
     String tmp = "";
     tmp += name+"\n"+path+"\n";
+    
     return tmp;
     
     //ACTUAL IMAGE HAS TO BE SAVED TOO////////////////////////////////////////////////////////////////

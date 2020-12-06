@@ -19,6 +19,7 @@ public class Project{
   //All Detail Pages
   public HomeDetail_Page homeDetailPage = new HomeDetail_Page();
   public CharacterDetail_Page characterDetailPage = new CharacterDetail_Page();
+  public MapDetail_Page mapDetailPage = new MapDetail_Page();
   
   //Flexible Environment Control UI
   public Page mainPage = homePage;
