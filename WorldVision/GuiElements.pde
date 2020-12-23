@@ -799,7 +799,7 @@ public class GuiNamedTextInput extends GuiElement{
       if(key == ENTER){
         updateText();
       }
-      if(key == BACKSPACE){
+      if(key == BACKSPACE && tmpText.length() > 0){
         tmpText = new String(shorten(tmpText.toCharArray()));
       }
     }
@@ -811,6 +811,111 @@ public class GuiNamedTextInput extends GuiElement{
     tmpText = "";
   }
 }
+
+
+
+
+//NamedTextInput
+public class GuiNamedNumberInput extends GuiElement{
+  public Vector2 expanse;
+  public String name;
+  public color nameColor;
+  
+  public int number;
+  public String tmpText;
+  
+  public boolean active;
+  public boolean hovering;
+  
+  public GuiNamedNumberInput(Vector2 pos, Vector2 exp, String n, int num, boolean e){
+    super(pos, e);
+    expanse = exp;
+    number = num;
+    tmpText = "";
+    active = false;
+    name = n;
+    nameColor = ColorCode.guiText;
+  }
+  
+  public GuiNamedNumberInput(Vector2 pos, Vector2 exp, String n, color nc, int num, boolean e){
+    super(pos, e);
+    expanse = exp;
+    number = num;
+    tmpText = "";
+    active = false;
+    name = n;
+    nameColor = nc;
+  }
+  
+  public void show(){
+    if(active){
+      fill(ColorCode.guiTriggered);
+    }else{
+      fill(ColorCode.guiTextBackground);
+    }
+    stroke(ColorCode.guiBorder);
+    rect(position.x+expanse.x*0.4, position.y, expanse.x*0.6, expanse.y);
+    
+    fill(ColorCode.guiText);
+    textSize(expanse.y-2);
+    if(active){
+      text(tmpText,position.x+1+expanse.x*0.4, position.y-4+expanse.y);
+    }else{
+      text(number,position.x+1+expanse.x*0.4, position.y-4+expanse.y);
+    }
+    
+    fill(nameColor);
+    textSize(expanse.y-2);
+    text(name,position.x+1, position.y-4+expanse.y);
+  }
+  
+  public void onClick(){
+    if(active){
+      if(hovering){
+        tmpText = str(number);
+      }else{
+        active = false;
+        tmpText = "";
+      }
+    }else{
+      if(hovering){ active = true; }
+    }
+  }
+  
+  public void onHover(){
+    if(active){
+      hovering = mouseX > position.x+expanse.x*0.4 && mouseY > position.y && mouseX < position.x+expanse.x && mouseY < position.y+expanse.y;
+    }else{
+      hovering = mouseX > position.x+expanse.x*0.4 && mouseY > position.y && mouseX < position.x+expanse.x && mouseY < position.y+expanse.y;
+    }
+  }
+  
+  public void onKeyDown(){
+    if(active){
+      if(key == '-' && tmpText.length() == 0){
+        tmpText += key;
+      }
+      if(key == '0' || key == '1' || key == '2' || key == '3' || key == '4' || key == '5' || key == '6' || key == '7' || key == '8' || key == '9'){
+        tmpText += key;
+      }
+      if(key == ENTER){
+        updateText();
+      }
+      if(key == BACKSPACE && tmpText.length() > 0){
+        tmpText = new String(shorten(tmpText.toCharArray()));
+      }
+    }
+  }
+  
+  public void updateText(){
+    active = false;
+    if(!tmpText.equals("") && !tmpText.equals("-")){
+      number = int( trim(tmpText) );
+      tmpText = "";
+    }
+  }
+}
+
 
 //Vector2Inspector
 public class GuiVector2 extends GuiElement{

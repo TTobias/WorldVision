@@ -11,6 +11,8 @@ ToDo:
 # stuff for characters: tags(roleInTheWorld), relations to other characters, some big textfield for other notes, embed images as reference, other custom properties (abilities, magic affility whatever), minor and major faction memberships + rank, synonym name list and translations, link to other wvsn-objects (tag system?), nationality, gender, status (alive, etc), list of connected events (with age?), bloodgroop?, haircolor, eyecolor, optical-marks, height, weight, character traits
 # relationships have a time period: [start, end], 2 characters, relation type, maybe opinions about each other (optionally different from the displayed opinion? ), background info, shared knowledge and properties, importance of the relationship, can be familial, teacher, friend, foe etc
 ! deleting more chars than there are leads to a textfield-crash
+#for characters: a potential event list showing their major actions in the future and necessary conditions
+#for characters: a scedule for the behavior on working days and special days etc.
 
 Version 0.1:
 + added everything there is so far.

@@ -165,15 +165,15 @@ public class CharacterList_Page extends Page{
       refreshList();
     }
     if(previousPageBtn.getTrigger()){
-      newStartIndex = startIndex-45 >= 0? startIndex -45 : 0;
+      newStartIndex = startIndex-objectsPerSite >= 0? startIndex -objectsPerSite : 0;
       refreshList();
     }
     if(nextPageBtn.getTrigger()){
-      newStartIndex = startIndex+45 < characterList.size()? startIndex +45 : startIndex;
+      newStartIndex = startIndex+objectsPerSite < characterList.size()? startIndex +objectsPerSite : startIndex;
       refreshList();
     }
     if(lastPageBtn.getTrigger()){
-      newStartIndex = characterList.size()-45 >= 0? characterList.size()-45 : 0;
+      newStartIndex = characterList.size()-objectsPerSite >= 0? characterList.size()-objectsPerSite : 0;
       refreshList();
     }
   }
@@ -189,7 +189,7 @@ public class MapList_Page extends Page{
   public ArrayList<Map> listInstance = new ArrayList<Map>();
   public int startIndex;
   public int newStartIndex; //used for changing list-page
-  public int objectsPerSite = 45;
+  public int objectsPerSite = 15;
   
   //called once at the initialization of the Page and everytime it is set as active Page
   public void initializePage(){
@@ -210,8 +210,8 @@ public class MapList_Page extends Page{
     }
     
     //Change ListNavigation Button Names
-    pageIndicatorTxt.text = floor(1+((float)(startIndex+1) / (float) objectsPerSite )) + " / " + floor((((float)characterList.size()-1) / (float) objectsPerSite )+1);
-    elementIndicatorTxt.text = (startIndex+1) + " - " + (startIndex+objectsPerSite) + " of " + characterList.size();
+    pageIndicatorTxt.text = floor(1+((float)(startIndex+1) / (float) objectsPerSite )) + " / " + floor((((float)mapList.size()-1) / (float) objectsPerSite )+1);
+    elementIndicatorTxt.text = (startIndex+1) + " - " + (startIndex+objectsPerSite) + " of " + mapList.size();
   }
   
   public void draw(){ BtnFunctions(); }
@@ -247,7 +247,7 @@ public class MapList_Page extends Page{
     upperSeperatorline = new GuiLine(new Vector2(20,140), new Vector2(980,140), true);
     gui.addGui ( upperSeperatorline );
     
-    mapStringTable = new GuiStringTable(new Vector2(10,150), new Vector2(330,75), 3, 2, true);
+    mapStringTable = new GuiStringTable(new Vector2(20,150), new Vector2(330,135), 3, 2, true);
     gui.addGui ( mapStringTable );
     
     lowerSeperatorline = new GuiLine(new Vector2(20,830), new Vector2(980,830), true);
@@ -289,19 +289,56 @@ public class MapList_Page extends Page{
       refreshList();
     }
     if(previousPageBtn.getTrigger()){
-      newStartIndex = startIndex-45 >= 0? startIndex -45 : 0;
+      newStartIndex = startIndex-objectsPerSite >= 0? startIndex -objectsPerSite : 0;
       refreshList();
     }
     if(nextPageBtn.getTrigger()){
-      newStartIndex = startIndex+45 < characterList.size()? startIndex +45 : startIndex;
+      newStartIndex = startIndex+objectsPerSite < characterList.size()? startIndex +objectsPerSite : startIndex;
       refreshList();
     }
     if(lastPageBtn.getTrigger()){
-      newStartIndex = characterList.size()-45 >= 0? characterList.size()-45 : 0;
+      newStartIndex = characterList.size()-objectsPerSite >= 0? characterList.size()-objectsPerSite : 0;
       refreshList();
     }
     if(reloadListBtn.getTrigger()){
       refreshList();
     }
+  }
+}
+
+
+
+//Map List Page         
+public class MapEditor_Page extends Page{
+  public MapEditor_Page(){ super("MapEditor"); }
+  
+  //used for displaying
+  public Map map;
+  
+  //called once at the initialization of the Page and everytime it is set as active Page
+  public void initializePage(){
+    if(map != null && mapImg != null){ mapImg.img = map.img; }
+  }
+  
+  public void draw(){ BtnFunctions(); }
+  
+  //Map 
+  public GuiImage mapImg; // Has to be replaced later, should be able to add features etc
+  
+  //Map Legend
+  public GuiPanel mapLegendPanel;
+  
+  public void constructGui(){
+    mapImg = new GuiImage(new Vector2(10,90), new Vector2(980,600),null,true);
+    gui.addGui( mapImg );
+    
+    mapLegendPanel = new GuiPanel(new Vector2(0,700), new Vector2(1000,200), ColorCode.background, true);
+    gui.addGui( mapLegendPanel );
+  }
+  
+  public void BtnFunctions(){
+    //if(reloadListBtn.getTrigger()){
+    //  refreshList();
+    //}
   }
 }

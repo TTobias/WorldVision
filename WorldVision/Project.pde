@@ -15,6 +15,7 @@ public class Project{
   public Home_Page homePage = new Home_Page();
   public CharacterList_Page characterListPage = new CharacterList_Page();
   public MapList_Page mapListPage = new MapList_Page();
+  public MapEditor_Page mapEditorPage = new MapEditor_Page();
   
   //All Detail Pages
   public HomeDetail_Page homeDetailPage = new HomeDetail_Page();
@@ -59,16 +60,16 @@ public class Project{
   //Navigationbar: [(0px,20px),(1600px,60px)]
   //Main Editor:  [(0px,80px),(1000px,820px)]
   //Secondary Editor:  [(1000px,80px),(600px,820px)]
-  public void show(){         controlBar.show();        navigationBar.show();        mainPage.show();        detailPage.show();         }
-  public void onClick(){      controlBar.onClick();     navigationBar.onClick();     mainPage.onClick();     detailPage.onClick();      }
-  public void onRelease(){    controlBar.onRelease();   navigationBar.onRelease();   mainPage.onRelease();   detailPage.onRelease();    }
-  public void onHover(){      controlBar.onHover();     navigationBar.onHover();     mainPage.onHover();     detailPage.onHover();      }
-  public void onDrag(){       controlBar.onDrag();      navigationBar.onDrag();      mainPage.onDrag();      detailPage.onDrag();       }
-  public void onKeyDown(){    controlBar.onKeyDown();   navigationBar.onKeyDown();   mainPage.onKeyDown();   detailPage.onKeyDown();    }
-  public void onKeyUp(){      controlBar.onKeyUp();     navigationBar.onKeyUp();     mainPage.onKeyUp();     detailPage.onKeyUp();      }
-  public void onKey(){        controlBar.onKey();       navigationBar.onKey();       mainPage.onKey();       detailPage.onKey();        }
-  public void onScrollUp(){   controlBar.onScrollUp();  navigationBar.onScrollUp();  mainPage.onScrollUp();  detailPage.onScrollUp();   }
-  public void onScrollDown(){ controlBar.onScrollDown();navigationBar.onScrollDown();mainPage.onScrollDown();detailPage.onScrollDown(); }
+  public void show(){         mainPage.show();        detailPage.show();         controlBar.show();        navigationBar.show();        }
+  public void onClick(){      mainPage.onClick();     detailPage.onClick();      controlBar.onClick();     navigationBar.onClick();     }
+  public void onRelease(){    mainPage.onRelease();   detailPage.onRelease();    controlBar.onRelease();   navigationBar.onRelease();   }
+  public void onHover(){      mainPage.onHover();     detailPage.onHover();      controlBar.onHover();     navigationBar.onHover();     }
+  public void onDrag(){       mainPage.onDrag();      detailPage.onDrag();       controlBar.onDrag();      navigationBar.onDrag();      }
+  public void onKeyDown(){    mainPage.onKeyDown();   detailPage.onKeyDown();    controlBar.onKeyDown();   navigationBar.onKeyDown();   }
+  public void onKeyUp(){      mainPage.onKeyUp();     detailPage.onKeyUp();      controlBar.onKeyUp();     navigationBar.onKeyUp();     }
+  public void onKey(){        mainPage.onKey();       detailPage.onKey();        controlBar.onKey();       navigationBar.onKey();       }
+  public void onScrollUp(){   mainPage.onScrollUp();  detailPage.onScrollUp();   controlBar.onScrollUp();  navigationBar.onScrollUp();  }
+  public void onScrollDown(){ mainPage.onScrollDown();detailPage.onScrollDown(); controlBar.onScrollDown();navigationBar.onScrollDown();}
   
   
   //used for saving projects as a file structure

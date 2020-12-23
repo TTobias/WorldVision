@@ -57,6 +57,7 @@ public class CharacterDetail_Page extends Page{
   public GuiText pageNameText;
   
   public GuiNamedTextInput nameIn;
+  public GuiNamedNumberInput ageIn;
   
   public void constructGui(){
     background = new GuiPanel(new Vector2(1000,80), new Vector2(600,820), ColorCode.background, true);
@@ -64,9 +65,9 @@ public class CharacterDetail_Page extends Page{
     gui.addGui( background ); gui.addGui( pageNameText );
     
     nameIn = new GuiNamedTextInput(new Vector2(1010,125), new Vector2(550,30), "Name:", ColorCode.white, "", true);
-    //BTN = new GuiButton(new Vector2(20,90), new Vector2(360,120), "Create New Project", true, true);
+    ageIn = new GuiNamedNumberInput(new Vector2(1010,160), new Vector2(550,30), "Age:", ColorCode.white, 20, true);
     gui.addGui( nameIn );
-    //gui.addGui(BTN );
+    gui.addGui( ageIn );
   }
   
   public void BtnFunctions(){
@@ -74,9 +75,10 @@ public class CharacterDetail_Page extends Page{
       character.name = nameIn.text;
       project.characterListPage.refreshList();
     }
-    /*if(CharacterPageBtn.getTrigger()){
-      //BTN ACTION
-    }*/
+    if(character.age != ageIn.number){
+      character.age = ageIn.number;
+      project.characterListPage.refreshList();
+    }
   }
 }
 
@@ -101,6 +103,7 @@ public class MapDetail_Page extends Page{
   public GuiPanel background;
   public GuiText pageNameText;
   public GuiImage mapPreviewImg;
+  public GuiButton editMapBtn;
   
   public GuiNamedTextInput nameIn;
   
@@ -111,8 +114,10 @@ public class MapDetail_Page extends Page{
     
     nameIn = new GuiNamedTextInput(new Vector2(1010,125), new Vector2(550,30), "Name:", ColorCode.white, "", true);
     mapPreviewImg = new GuiImage(new Vector2(1010,165), new Vector2(580,350),null,true);
+    editMapBtn = new GuiButton(new Vector2(1310,525), new Vector2(100,25) ,"Edit" , true, true);
     gui.addGui( nameIn );
     gui.addGui( mapPreviewImg );
+    gui.addGui( editMapBtn );
   }
   
   public void BtnFunctions(){
@@ -120,8 +125,9 @@ public class MapDetail_Page extends Page{
       map.name = nameIn.text;
       project.mapListPage.refreshList();
     }
-    /*if(CharacterPageBtn.getTrigger()){
-      //BTN ACTION
-    }*/
+    if(editMapBtn.getTrigger()){
+      project.mapEditorPage.map = map;
+      project.setMainPage(project.mapEditorPage);
+    }
   }
 }
