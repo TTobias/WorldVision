@@ -14,8 +14,12 @@ ToDo:
 #for characters: a potential event list showing their major actions in the future and necessary conditions
 #for characters: a scedule for the behavior on working days and special days etc.
 
+
+
 Version 0.1:
-+ added everything there is so far.
++ added everything there is so far, including:
++ Character Tab
++ Map Tab
 
 
 Program for worldbuilding including persons, maps, places and all that stuff.

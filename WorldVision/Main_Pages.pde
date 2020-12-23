@@ -11,7 +11,7 @@ public class Home_Page extends Page{
   
   public GuiButton CharacterPageBtn;
   public GuiButton mapListPageBtn;
-  public GuiButton timePageBtn;
+  public GuiButton timeSystemPageBtn;
   public GuiButton eventPageBtn;
   public GuiButton speciesPageBtn;
   public GuiButton nationPageBtn; //+treaty web?
@@ -36,7 +36,7 @@ public class Home_Page extends Page{
   public void constructGui(){
     CharacterPageBtn = new GuiButton(new Vector2(15,90), new Vector2(150,65), "Characters", true, true);    gui.addGui( CharacterPageBtn );
     mapListPageBtn = new GuiButton(new Vector2(175,90), new Vector2(150,65), "Maps ", true, true);    gui.addGui( mapListPageBtn );
-    timePageBtn = new GuiButton(new Vector2(335,90), new Vector2(150,65), "Time ", false, true);    gui.addGui( timePageBtn );
+    timeSystemPageBtn = new GuiButton(new Vector2(335,90), new Vector2(150,65), "Time System", true, true);    gui.addGui( timeSystemPageBtn );
     eventPageBtn = new GuiButton(new Vector2(495,90), new Vector2(150,65), "Events", false, true);    gui.addGui( eventPageBtn );
     speciesPageBtn = new GuiButton(new Vector2(655,90), new Vector2(150,65), "Species", false, true);    gui.addGui( speciesPageBtn );
     nationPageBtn = new GuiButton(new Vector2(815,90), new Vector2(150,65), "Nations", false, true);    gui.addGui( nationPageBtn );
@@ -48,6 +48,9 @@ public class Home_Page extends Page{
     }
     if(mapListPageBtn.getTrigger()){
       project.setMainPage(project.mapListPage);
+    }
+    if(timeSystemPageBtn.getTrigger()){
+      project.setMainPage(project.timeSystemPage);
     }
   }
 }
@@ -311,6 +314,45 @@ public class MapList_Page extends Page{
 //Map List Page         
 public class MapEditor_Page extends Page{
   public MapEditor_Page(){ super("MapEditor"); }
+  
+  //used for displaying
+  public Map map;
+  
+  //called once at the initialization of the Page and everytime it is set as active Page
+  public void initializePage(){
+    if(map != null && mapImg != null){ mapImg.img = map.img; }
+  }
+  
+  public void draw(){ BtnFunctions(); }
+  
+  //Map 
+  public GuiImage mapImg; // Has to be replaced later, should be able to add features etc
+  
+  //Map Legend
+  public GuiPanel mapLegendPanel;
+  
+  public void constructGui(){
+    mapImg = new GuiImage(new Vector2(10,90), new Vector2(980,600),null,true);
+    gui.addGui( mapImg );
+    
+    mapLegendPanel = new GuiPanel(new Vector2(0,700), new Vector2(1000,200), ColorCode.background, true);
+    gui.addGui( mapLegendPanel );
+  }
+  
+  public void BtnFunctions(){
+    //if(reloadListBtn.getTrigger()){
+    //  refreshList();
+    //}
+  }
+}
+
+
+
+
+
+//Map List Page         
+public class TimeSystem_Page extends Page{
+  public TimeSystem_Page(){ super("TimeSystem"); }
   
   //used for displaying
   public Map map;

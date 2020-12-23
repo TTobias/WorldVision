@@ -1,3 +1,5 @@
+//ZD = Zusatz Daten (in German because of the Z being the last letter in the alphabet)
+
 public class Character{
   public String name;
   public String species; ///ADD CUSTOM SPECIES CLASS

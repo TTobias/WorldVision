@@ -16,6 +16,7 @@ public class Project{
   public CharacterList_Page characterListPage = new CharacterList_Page();
   public MapList_Page mapListPage = new MapList_Page();
   public MapEditor_Page mapEditorPage = new MapEditor_Page();
+  public TimeSystem_Page timeSystemPage = new TimeSystem_Page();
   
   //All Detail Pages
   public HomeDetail_Page homeDetailPage = new HomeDetail_Page();
